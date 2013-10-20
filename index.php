@@ -132,13 +132,10 @@ if($filecount < 1){
 </div>
 
 <div id="footer"><span class="container">
-</span>Dir Listing Script by <a href="http://spkz.monolidthz.com">$!nG1_ePl[A]yErZ</a> V.<?php echo($VERSION);?></div>
+</span><a href="https://github.com/MoNoLidThZ/SPKZ_dir_script">Directory Listing Script</a> by <a href="http://spkz.monolidthz.com">$!nG1_ePl[A]yErZ</a> V.<?php echo($VERSION);?></div>
 <div id="loading" class="overlay">
  <h1 class="text-center"> <img id="loading-image" src="_res/ajax-loader.gif" alt="Loading..." />Loading...</h1> 
 </div>
-<!--<div id="pageoverlay" class="overlay" style="display:none;">
-	<button type="button" class="close" id="closeoverlay">&times;</button> 
-	<button	id="resizevideo"	title="Toggle Screen Size"	type="button"	class="close glyphicon glyphicon-resize-full"></button>-->
 <div id="videoWrap" title="Video Player" style="display:none;">
     <video id="mainVideo" src="" preload="metadata">
 	Your Browser Does not Support HTML5 Video Tag
@@ -164,20 +161,6 @@ if($filecount < 1){
         </button>
     </div>
 </div>
-<!--	<div id="playerbox">
-    <video id="player" width="640" height="360" controls></video><br>
-    </div>
-<div class="btn-group" style="display:none;">
-  <button	id="playvideo"	title="Play"	type="button"	class="btn btn-primary glyphicon glyphicon-play"></button>
-  <button	id="pausevideo"	title="Pause"	type="button"	class="btn btn-primary glyphicon glyphicon-pause" style="display:none;"></button>
-  <button	id="volupvideo"	title="Volume Up"	type="button"	class="btn btn-success glyphicon glyphicon-volume-up"></button>
-  <button	id="voldnvideo"	title="Volume Down"	type="button"	class="btn btn-warning glyphicon glyphicon-volume-down"></button>
-  <button	id="resizevideo"	title="Big Screen"	type="button"	class="btn btn-default glyphicon glyphicon-resize-full"></button>
-  <button	id="unresizevideo"	title="Normal Screen"	type="button"	class="btn btn-default glyphicon glyphicon-resize-small" style="display:none;"></button>
-  <button	id="fsvideo"	title="Full Screen"	type="button"	class="btn btn-info glyphicon glyphicon-fullscreen"></button>
-</div>
-
-</div>-->
 <script>
 var CurDir = "<?php echo($safedir ? $safedir."/" : NULL); ?>";
 var PageTitle = "<?php echo $pagetitle ?>";
@@ -191,20 +174,6 @@ $("div.panel:hidden").show( <?php if($safedir) {?>"slide", { direction:"right" }
 	ViewVideo(<?php echo($_GET['v'] ? $_GET['v'] : $_GET['V']); ?>);
 	<?php }?>
 });
-<?php /*for ($i = 0; $i <= $uid-1; $i++) { ?>
-$( "#close-<?php echo $i ?>" ).click(function() {
-$("div#<?php echo $i ?>-b").hide( "blind", { direction:"up" } ,1000 );
-$( "#close-<?php echo $i ?>" ).hide( "blind", { direction:"up" } ,500 ,function(){
-	$("#open-<?php echo $i ?>").show( "blind", { direction:"up" } ,500 );
-});
-});
-$( "#open-<?php echo $i ?>" ).click(function() {
-$("div#<?php echo $i ?>-b").show( "blind", { direction:"up" } ,1000 );
-$( "#open-<?php echo $i ?>" ).hide( "blind", { direction:"up" } ,500 ,function(){
-	$("#close-<?php echo $i ?>").show( "blind", { direction:"up" } ,500 );
-});
-});
-<?php } */?>
 
 </script>
 </body>

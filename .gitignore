@@ -38,6 +38,8 @@ Thumbs.db
 
 _thumbnails/*.jpg
 images/
-Hamato.mp4
-Final3.mp4
-[Fate-FS] Strike the Blood - 01 TH (MX 1280x720 x264 AAC)-muxed.mp4
+*.mp3
+*.mp4
+*.ogg
+*.ogv
+*.webm

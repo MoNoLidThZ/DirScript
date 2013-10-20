@@ -27,6 +27,7 @@ $dong[] = "ლ(ಠ_ಠლ) Screw this donger ლ(ಠ_ಠლ)";
 $dong[] = "(ง ͠° ͟ل͜ ͡°)ง ᴍᴀsᴛᴇʀ ʏᴏᴜʀ ᴅᴏɴɢᴇʀ, ᴍᴀsᴛᴇʀ ᴛʜᴇ ᴇɴᴇᴍʏ (ง ͠° ͟ل͜ ͡°)ง";
 $dong[] = "ᕙ༼ຈل͜ຈ༽ᕗ do you even lift your﻿ dongers ᕙ༼ຈل͜ຈ༽ᕗ";
 $dong[] = "༼ ºل͟º ༽ raise your mudgolems! ༼ ºل͟º ༽";
+$dong[] = "༼ ºل͟º ༽ YOU EITHER DIE A DONG OR LIVE LONG ENOUGH TO BECAME A DONGER ༼ ºل͟º ༽";
 //Color Class for Category Container
 /*Available colors:
 	"default" = Gray
