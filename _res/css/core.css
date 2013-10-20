@@ -1,0 +1,39 @@
+body { background-color: #eee; font-family: tahoma; font-size: 12px;}
+#footer { text-align: center; }
+A.root { font-family:monospace; text-decoration:none; color:black; }
+DIV.image { width: 200px; height: 130px; float: left; text-align: center; border: 0px; overflow:visible; padding-top:10px;}
+DIV.image IMG { border: 1px solid #444; background-color: #eee; }
+.item:hover { background: rgba(0,0,0,0.1); }
+.item:focus { background: rgba(0,0,0,0.2); }
+.item { transition: background 0.5s; background: rgba(0,0,0,0); }
+body { padding-bottom: 80px; }
+.overlay {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  display: block;
+  background: rgba(0,0,0,0.7);
+  z-index: 99;
+  text-align: center;
+  padding: 130px 25%;
+}
+/*#playerbox {
+	background: #000;
+	width:1280px;
+	height:720px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 0.5%;
+}*/
+div.imgbox {
+	width:160px;
+	height:90px;
+margin-left:auto;
+margin-right:auto;
+}
+.panel-success.highlight { box-shadow: 0px 0px 15px 5px #D6E9C6; }
+.panel-warning.highlight { box-shadow: 0px 0px 15px 5px #FBEED5; }
+.panel-info.highlight { box-shadow: 0px 0px 15px 5px #BCE8F1; }
+.panel-primary.highlight { box-shadow: 0px 0px 15px 5px #428BCA; }

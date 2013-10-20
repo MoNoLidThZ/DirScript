@@ -1,0 +1,135 @@
+<?php 
+class Lister {
+	private $Name, $CurDir, $FileInfo_Enable, $content, $cssclas, $isfolder, $drawctype, $uniqueid;
+	public function __construct($objType,$name){
+		$this->Name = $name;
+		global $BOOTSTRAP_CLASS, $Browse, $safedir, $uid;
+		if(!$BOOTSTRAP_CLASS[strtolower($objType."s")]){
+			exit("No Style Defined or Unknown Class(".strtolower($objType."s").")!");
+		}
+		$this->cssclas = $BOOTSTRAP_CLASS[strtolower($objType."s")];
+		$this->CurDir = ($safedir ? $safedir . "/" : NULL);
+		$this->FileInfo_Enable = extension_loaded("php_fileinfo");
+		$this->drawctype = $objType;
+		$this->uniqueid = $uid;
+	}
+	public function SetCategoryContent($data){
+		$this->content = $data;
+	}
+	public function Draw(){
+		$this->PrintOpenTag();
+		$this->PrintContentArray($this->content);
+		$this->PrintCloseTag();
+	}
+	private function PrintOpenTag(){
+		echo '<section><div id="'.$this->uniqueid.'" class="panel panel-'.$this->cssclas.'" style="display:none;">';
+		echo("");
+		echo '<div class="panel-heading">';
+    	echo '<h3 class="panel-title"> <button id="close-'.$this->uniqueid.'" data-target="'.$this->uniqueid.'" type="button" class="close glyphicon glyphicon-chevron-up" aria-hidden="true"></button><button id="open-'.strtolower($this->uniqueid).'" data-target="'.$this->uniqueid.'" type="button" class="close glyphicon glyphicon-chevron-down" aria-hidden="true" style="display:none;"></button>'.$this->Name."s".' ('. count( $this->content ) .')</h3>';
+  		echo('</div>');
+  		echo '<div id="'.strtolower($this->uniqueid).'-b" class="panel-body">'."\n";
+	}
+	private function PrintCloseTag(){
+		echo "</div></div></section>";
+	}
+	private function PrintContent($data){
+		$contentid = sprintf("%u", crc32($data[1]));
+		echo('<div class="row item" id="'.$contentid.'">');
+		echo('<div class="col-md-1 col-sm-1 col-xs-1 text-right">'.$this->GetExtImage($data[1],$contentid).'</div>');//File Ext Image
+		echo('<div class="col-md-7 col-sm-9 col-xs-5"><a href="'.($this->drawctype == "folder" ? "?b=".$this->EncURL($this->CurDir.$data[1]): $this->EncURL($this->CurDir.$data[1]))."\" data-parent=\"".$this->uniqueid."\">".$data[1]."</a></div>\n");
+		echo('<div class="col-md-1 col-sm-2 col-xs-4">'.($data[2] ? $this->FileSize($data[2]) :"Folder").'</div>');//File Size
+		echo('<div class="col-md-3 hidden-sm hidden-xs"><time datetime="'.date("Y-m-d\TH:i:sP" , $data[0]).'">'.date("D d F Y h:i:s A", $data[0]).'</time></div>');
+		echo('</div>'."\n");
+	}
+	private function PrintContentVideo($data){
+		global $ICON_FOLDER;
+		$fn = explode(".",$data[1]);
+		$ext = strtolower($fn[count($fn) - 1]);
+		$contentid = sprintf("%u", crc32($data[1]));
+		echo('<div class="row item" id="'.$contentid.'">');
+		echo('<div class="col-md-1 col-sm-1 col-xs-1 text-right">'.$this->GetExtImage($data[1],$contentid).'</div>');//File Ext Image
+		if(IsVideoHTML5($data[1])){
+		echo('<div class="col-md-6 col-sm-8 col-xs-5"><a href="?download='.urlencode($this->CurDir.$data[1])."\">".$data[1]."</a></div>\n");
+		echo('<div class="col-md-1 col-sm-1 col-xs-1"><a title="Click here to watch: '.$data[1].'" class="ViewVideo" href="javascript:ViewVideo('.$contentid.');" data-mime="video/'.$ext.'">'.$this->LazyLoadImage($ICON_FOLDER."/eye.png",16,16)."</a></div>\n");
+		}else{
+		echo('<div class="col-md-7 col-sm-9 col-xs-5"><a href="?download='.urlencode($this->CurDir.$data[1])."\">".$data[1]."</a></div>\n");
+		}
+		echo('<div class="col-md-1 col-sm-2 col-xs-4">'.($data[2] ? $this->FileSize($data[2]) :"&nbsp;").'</div>');//File Size
+		echo('<div class="col-md-3 hidden-sm hidden-xs"><time datetime="'.date("Y-m-d\TH:i:sP" , $data[0]).'">'.date("D d F Y h:i:s A", $data[0]).'</time></div>');
+		echo('</div>'."\n");
+	}
+	private function PrintContentArray($array){
+		if(count( $array ) == 0){ echo("No content specified"); }
+		switch($this->drawctype){
+			case "image";
+			foreach ( $array as $data ){
+				echo($this->GetImageLink($this->EncURL($this->CurDir.$data[1]),urlencode($data[1])));
+			}
+			break;
+			case "video";
+			foreach ( $array as $data ){
+				$this->PrintContentVideo($data);
+			}
+			break;
+			case "audio";
+			//Not yet implemented
+			break;
+			case "folder";
+			foreach ( $array as $data ){
+				$this->PrintContent($data);
+			}
+			break;
+			default;
+			foreach ( $array as $data ){
+				$this->PrintContent($data);
+			}
+			break;
+		}
+	}
+	private function FileSize($bytes, $precision = 2){
+	    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+	    $bytes = max($bytes, 0); 
+	    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+	    $pow = min($pow, count($units) - 1); 
+		$bytes /= pow(1024, $pow);
+    	return round($bytes, $precision) . ' ' . $units[$pow]; 
+	}
+	private function GetImageLink( $path ,$name )
+	{
+		global $THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT;
+		return "<div class=\"image item\"><a href=\"".$path."\"><div class=\"imgbox\">".$this->LazyLoadImage("?img=".$path,$THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT)."</div></a> $name</div>\n";
+	}
+	private function LazyLoadImage( $imgpath, $width, $height, $id = NULL, $class = NULL ){
+		return "<img ".($id ? "id=\"i-".$id."\"": "")." class=\"lazy ".$class."\" src=\"_res/grey.gif\" data-original=\"$imgpath\" width=$width 	height=$height alt=\"$img\">";
+	}
+	private function GetExtImage($fn,$cntid){
+		global $ICON_EXT,$ICON_FOLDER;
+		$fn = explode(".",$fn);
+		$ext = strtolower($fn[count($fn) - 1]);
+		if($this->drawctype == "folder") return $this->LazyLoadImage($ICON_FOLDER."/".$ICON_EXT["folder"],16,16);
+		return $ICON_EXT[$ext] ? $this->LazyLoadImage($ICON_FOLDER."/".$ICON_EXT[$ext],16,16) : $this->LazyLoadImage($ICON_FOLDER."/".$ICON_EXT["unknown"],16,16,$cntid);
+	}
+	private function DrawHTML5VideoTag($data){
+		//$finfo = finfo_open(FILEINFO_MIME_TYPE);
+		$contentid = sprintf("%u", crc32($data[1]));
+		$fn = explode(".",$data[1]);
+		$ext = strtolower($fn[count($fn) - 1]);
+		echo('<div class="row item text-center" id="'.$contentid.'">');
+		echo('<div class="col-md-12 text-center">');
+		echo('<video width="1000" height="563" controls>
+  				<source src="'.$this->CurDir.$data[1].'" type="video/'.$ext.'">
+  				Your browser is suck.
+		</video><br><a href="?download='.urlencode($this->CurDir.$data[1]).'">'.$data[1]."</a>\n");
+		echo("</div></div>");
+		//finfo_close($finfo);
+	}
+	private function EncURL ( $TheVal ) //Url Encode, with slashes
+	{ 
+		if($this->drawctype == "folder"){
+		return str_replace("%2F","/",urlencode($TheVal));
+		}else{
+		return str_replace("%2F","/",rawurlencode($TheVal));
+		}
+	} 
+}
+?>
