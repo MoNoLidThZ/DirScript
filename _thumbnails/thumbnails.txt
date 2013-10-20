@@ -1,0 +1,2 @@
+Do not delete this folder!
+All thumbnails that newly generated will be put inside this folder.
