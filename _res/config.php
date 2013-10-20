@@ -14,7 +14,7 @@ $THUMBNAIL_WIDTH = 160;
 $THUMBNAIL_HEIGHT = 90;
 
 $name = "$!nG1_ePl[A]yErZ";	//Your name here
-$pagetitle = $name." - Index of /".$_GET["b"];
+$pagetitle = $name." - Index of /";
 //Use Randomly selcected header or page title?
 $showmydongers = true;
 //These are randomly selected header.

@@ -26,7 +26,7 @@ $dirs = count($Directory) - 1;
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?php echo($pagetitle); ?></title>
+<title><?php echo($pagetitle.$_GET["b"]); ?></title>
 <link href="_res/css/start/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
 <link href="_res/css/bootstrap.min.css" rel="stylesheet">
 <link href="_res/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@ $dirs = count($Directory) - 1;
 <ul class="breadcrumb well well-sm">
   <?php if($dirs == -1)
 { echo('<li class="active">Root</li>'); }else{
-echo('<li class="active"><a href="?b=">Root</a></li>'); }?>
+echo('<li><a href="?b=">Root</a></li>'); }?>
   <?php
 foreach($Directory as $k => $v){ 
 if($k == $dirs){ ?>
@@ -133,7 +133,7 @@ if($filecount < 1){
 </div>
 
 <div id="footer"><span class="container">
-</span>Dir Listing Script by <a href="http://spkz.monolidthz.com">$!nG1_ePl[A]yErZ</a> V.<?php echo($VERSION);?> (Generated in: <?php echo microtime(true) - $тиме; unset($тиме); ?> Seconds)</div>
+</span>Dir Listing Script by <a href="http://spkz.monolidthz.com">$!nG1_ePl[A]yErZ</a> V.<?php echo($VERSION);?></div>
 <div id="loading" class="overlay">
  <h1 class="text-center"> <img id="loading-image" src="_res/ajax-loader.gif" alt="Loading..." />Loading...</h1> 
 </div>
@@ -181,6 +181,7 @@ if($filecount < 1){
 </div>-->
 <script>
 var CurDir = "<?php echo($safedir ? $safedir."/" : NULL); ?>";
+var PageTitle = "<?php echo $pagetitle ?>";
   $(window).load(function() {
     $('#loading').hide();
 	setTimeout(function() {$("img.lazy").lazyload({ 

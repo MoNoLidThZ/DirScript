@@ -2,7 +2,11 @@
 $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
         || location.hostname == this.hostname) {
-
+		$($(this).attr("href")).addClass("highlight",1000, "easeOutBounce");
+		if(lasthighlight != $(this).attr("href")){
+			$(lasthighlight).removeClass("highlight",1000, "easeOutBounce");
+		}
+		lasthighlight = $(this).attr("href");
         var target = $(this.hash);
         target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
            if (target.length) {
@@ -14,31 +18,57 @@ $('a[href*=#]:not([href=#])').click(function() {
     }
 });
 var lasthighlight = false;
-$("a").click(function(){
-	if($(this).attr("data-parent")){
-		var thisshit = this;
-		var target = "#"+$(this).attr("data-parent") + "-b";
-		$("article").hide( "slide", { direction:"left" } ,1000 ,function(){ LoadNewPage($(thisshit).attr("href")); });
+
+$("a[href^='?b']").click(function(e) {
+		LoadNewPage($(this).attr("href"),false);
 		return false;
-	}else if((/^#/).test($(this).attr("href"))){
-		$($(this).attr("href")).addClass("highlight",1000, "easeOutBounce");
-		if(lasthighlight != $(this).attr("href")){
-			$(lasthighlight).removeClass("highlight",1000, "easeOutBounce");
-		}
-		lasthighlight = $(this).attr("href");
-	}
 });
-function LoadNewPage( href ){
+function LoadNewPage( href , rs){
 	//$("div.panel:hidden").show( <?php if($safedir) {?>"slide", { direction:"right" }<?php }else{ ?>"drop", { direction:"down" }<?php } ?> ,1500 );
+	$("article").hide( "slide", { direction:"left" } ,1000);
+	setTimeout(function(){
+	//document.title = PageTitle + href.substr(3);
 	$("#loading").fadeIn("fast");
-	$.get("_res/ajax.php",{ ajax:"breadcrumb" }).done(function(status,data){ 
-	if(status == "success"){
-		
+	$.get("_res/ajax.php",{ ajax:"breadcrumb", b:href.substr(3) }).done(function(data1,status1){ 
+	if(status1 == "success"){
+		//$("#breadcrumb").hide("slide", { direction:"right" }, 1500);
+		$("#breadcrumb").html( data1 );
+		$.get("_res/ajax.php",{ ajax:"article", b:href.substr(3) }).done(function(data2,status2){
+			if(status2 == "success"){
+				$("article").html( data2 );
+				$.get("_res/ajax.php",{ ajax:"navbar", b:href.substr(3) }).done(function(data3,status3){
+					if(status3 == "success"){
+						$("nav.navbar").html( data3 );
+						$("article").show();
+						$("div.panel:hidden").show( "slide", { direction:"right", complete: function() { $("img.lazy").lazyload({ effect : "fadeIn" },1000);} } ,1500 );
+						$("#loading").fadeOut("fast");
+						if(rs){
+							history.replaceState(null, document.title, href);
+						}else{
+							history.pushState(null, document.title, href);
+						}
+						document.title = PageTitle + href.substr(3);
+							$("a[href^='?b']").click(function(e) {
+								var thisshit = this;
+								LoadNewPage($(thisshit).attr("href"));
+								return false;
+							});
+					}else{
+						alert(status3+": Couldn't Load Page, Redirecting...");
+						window.location = href; 
+					}
+				});
+			}else{
+				alert(status2+": Couldn't Load Page, Redirecting...");
+				window.location = href; 
+			}
+		});
 	}else{
-	alert("Warning: Couldn't Load Page, Redirecting...");
-	window.location = href; 
+		alert(status1+": Couldn't Load Page, Redirecting...");
+		window.location = href; 
 	}
 	});
+	},1000)
 }
 $( 'button.close[id^="close-"]' ).click(function() {
 $("#"+$(this).attr("data-target")+"-b").hide( "blind", { direction:"up" } ,1000 );
@@ -93,4 +123,15 @@ function ViewVideo( id ){
 	
 	//$("#playvideo").show();
 	//$("#pausevideo").hide();
+}
+$(window).bind("popstate", function(e) {
+    LoadNewPage("?b="+getUrlVars()["b"],true);
+});
+
+function getUrlVars() {
+	var vars = {};
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+	});
+	return vars;
 }
