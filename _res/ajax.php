@@ -4,7 +4,11 @@ require("file_icons.php");
 require("functions.php");
 require("class_lister.php");
 require("handlers.php");
+if($_GET["b"]){
 $Browse = $_GET["b"] ;
+}else{
+$Browse = substr($_GET["href"], 3);
+}
 $Directory = array_values(array_filter(explode("/",$_GET["b"])));
 $safedir = implode("/",$Directory);
 if ( $Browse )
@@ -21,7 +25,7 @@ case "breadcrumb"; //Get Breadcrumb Navigation
 <ul class="breadcrumb well well-sm">
   <?php if($dirs == -1)
 { echo('<li class="active">Root</li>'); }else{
-echo('<li class="active"><a href="?b=">Root</a></li>'); }?>
+echo('<li><a href="?b=">Root</a></li>'); }?>
   <?php
 foreach($Directory as $k => $v){ 
 if($k == $dirs){ ?>
@@ -81,7 +85,28 @@ if($filecount < 1){
 <?php
 break;
 case "navbar";?>
-
+<h1 hidden>Navigation Bar</h1>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="?b=">Back to Root</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse pull-right">
+          <ul class="nav navbar-nav">
+      <?php  
+	  $i=0; $k=0;
+	  foreach($CONTENT_SORT as $category) {
+		  if(count( $dirdata[$CONTENT_SORT[$i][0]] ) == 0) {$i++; continue; } 
+		   ?>
+      <li><a href="#<?php echo $k ?>"><?php echo $CONTENT_SORT[$i][1] ?>s <span class="badge"><?php echo count( $dirdata[$CONTENT_SORT[$i][0]] ) ?></span></a></li>
+      <?php $i++; $k++;}
+	  unset($i,$k,$category);?>
+    </ul>
+        </div>
 <?php
 break;
 default;?>
