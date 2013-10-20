@@ -36,7 +36,7 @@
 ehthumbs.db
 Thumbs.db
 
-_thumbnails/
+_thumbnails/*.jpg
 images/
 Hamato.mp4
 Final3.mp4
