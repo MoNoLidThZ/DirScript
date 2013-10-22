@@ -24,6 +24,7 @@ $("a[href^='?b']").click(function(e) {
 		return false;
 });
 function LoadNewPage( href , rs){
+	if(!href) { return; };
 	//$("div.panel:hidden").show( <?php if($safedir) {?>"slide", { direction:"right" }<?php }else{ ?>"drop", { direction:"down" }<?php } ?> ,1500 );
 	$("article").hide( "slide", { direction:"left" } ,1000);
 	setTimeout(function(){
@@ -125,6 +126,7 @@ function ViewVideo( id ){
 	//$("#pausevideo").hide();
 }
 $(window).bind("popstate", function(e) {
+	if(!getUrlVars()["b"]) { return; };
     LoadNewPage("?b="+getUrlVars()["b"],true);
 });
 
