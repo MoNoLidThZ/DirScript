@@ -1,7 +1,7 @@
 $!nG1_ePl[?]yErZ's Directory Listing Script
 =======================
 
-Loosely based on Garry's Directory Listing Script V.3.0 (Example: http://www.monolidthz.com/images/ )
+Loosely based on Garry's Directory Listing Script V.3.0 (Example: http://ss.monolidthz.com/ )
 
 Features:
 
