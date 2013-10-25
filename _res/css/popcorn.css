@@ -11,20 +11,6 @@
 /* Popcorn CSS
 ----------------------------------- */
 
-/* Hard Reset */
- * {
-    font-size:100%;
-    margin: 0;
-    padding: 0;
-    outline:none;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-}
-body {
-    background:#fff;
-    padding-top:40px;
-}
 /* The wrapper of the Video UI */
  #videoWrap {
     position: relative;
