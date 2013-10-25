@@ -1,4 +1,6 @@
 <?php
+if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
+{
 require("config.php"); 
 require("file_icons.php");
 require("functions.php");
@@ -115,5 +117,8 @@ Invaild Method
 <?php var_dump($_REQUEST); ?>
 <?php 
 break;
+}
+}else{
+exit("This url is an ajax webservice – direct access is denied");	
 }
 ?>
