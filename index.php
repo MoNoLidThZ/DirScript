@@ -136,8 +136,15 @@ if($filecount < 1){
 <div id="loading" class="overlay">
  <h1 class="text-center"> <img id="loading-image" src="_res/ajax-loader.gif" alt="Loading..." />Loading...</h1> 
 </div>
-<div id="videoWrap" title="Video Player" style="display:none;">
-    <video id="mainVideo" src="" preload="metadata">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="videoWrap" title="Video Player" style="display:none; left:0px;" class="modal-dialog">
+	<div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+    <video id="mainVideo" preload="metadata">
 	Your Browser Does not Support HTML5 Video Tag
     </video>
     
@@ -160,6 +167,10 @@ if($filecount < 1){
         <i class="icon-unmute"></i>
         </button>
     </div>
+	</div>
+	</div>
+	</div>
+	</div>
 </div>
 <script>
 var CurDir = "<?php echo($safedir ? $safedir."/" : NULL); ?>";
