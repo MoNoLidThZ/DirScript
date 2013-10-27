@@ -49,10 +49,10 @@ class Lister {
 		echo('<div class="row item" id="'.$contentid.'">');
 		echo('<div class="col-md-1 col-sm-1 col-xs-1 text-right">'.$this->GetExtImage($data[1],$contentid).'</div>');//File Ext Image
 		if(IsVideoHTML5($data[1])){
-		echo('<div class="col-md-6 col-sm-8 col-xs-5"><a href="?download='.urlencode($this->CurDir.$data[1])."\">".$data[1]."</a></div>\n");
+		echo('<div class="col-md-6 col-sm-8 col-xs-5"><a href="?download='.rawurlencode($this->CurDir.$data[1])."\">".$data[1]."</a></div>\n");
 		echo('<div class="col-md-1 col-sm-1 col-xs-1"><a title="Click here to watch: '.$data[1].'" class="ViewVideo" href="javascript:ViewVideo('.$contentid.');" data-mime="video/'.$ext.'">'.$this->LazyLoadImage($ICON_FOLDER."/eye.png",16,16)."</a></div>\n");
 		}else{
-		echo('<div class="col-md-7 col-sm-9 col-xs-5"><a href="?download='.urlencode($this->CurDir.$data[1])."\">".$data[1]."</a></div>\n");
+		echo('<div class="col-md-7 col-sm-9 col-xs-5"><a href="?download='.rawurlencode($this->CurDir.$data[1])."\">".$data[1]."</a></div>\n");
 		}
 		echo('<div class="col-md-1 col-sm-2 col-xs-4">'.($data[2] ? $this->FileSize($data[2]) :"&nbsp;").'</div>');//File Size
 		echo('<div class="col-md-3 hidden-sm hidden-xs"><time datetime="'.date("Y-m-d\TH:i:sP" , $data[0]).'">'.date("D d F Y h:i:s A", $data[0]).'</time></div>');
@@ -125,11 +125,7 @@ class Lister {
 	}
 	private function EncURL ( $TheVal ) //Url Encode, with slashes
 	{ 
-		if($this->drawctype == "folder"){
-		return str_replace("%2F","/",urlencode($TheVal));
-		}else{
 		return str_replace("%2F","/",rawurlencode($TheVal));
-		}
 	} 
 }
 ?>

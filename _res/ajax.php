@@ -7,11 +7,11 @@ require("functions.php");
 require("class_lister.php");
 require("handlers.php");
 if($_GET["b"]){
-$Browse = $_GET["b"] ;
+$Browse = rawurldecode($_GET["b"]);
 }else{
-$Browse = substr($_GET["href"], 3);
+$Browse = substr(rawurldecode($_GET["href"]), 3);
 }
-$Directory = array_values(array_filter(explode("/",$_GET["b"])));
+$Directory = array_values(array_filter(explode("/",rawurldecode($_GET["b"]))));
 $safedir = implode("/",$Directory);
 if ( $Browse )
 {
