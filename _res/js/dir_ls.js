@@ -24,6 +24,7 @@ $("a[href^='?b']").click(function(e) {
 });
 function LoadNewPage( href , rs){
 	if(!href) { return; };
+	CurDir = href.substr(3);
 	$("article").hide( "slide", { direction:"left" } ,1000);
 	setTimeout(function(){
 	$("#loading").fadeIn("fast");
@@ -81,15 +82,21 @@ $(this).hide( "blind", { direction:"up" } ,500 ,function(){
 });
 function ViewVideo( id ){
 	if(!$(id)){ return false; }
+	$('#myModal').modal();
 	$("#videoWrap").show();
-	$( "#videoWrap" ).dialog({
+	/*$( "#videoWrap" ).dialog({
 	minWidth: 650,
     minHeight: 360,
     modal: true,
-	close: function( event, ui ) { $("#mainVideo")[0].pause(); $("video#mainVideo").attr("src",""); $(this).dialog("destroy"); $(this).hide();  },
+	close: function( event, ui ) { $("#mainVideo")[0].pause(); $("video#mainVideo").removeAttr("src"); $(this).dialog("destroy"); $(this).hide();  },
 	title: "Video Player: " + $("#"+id+" > div:nth-child(2) > a:nth-child(1)").text()
-    });
-	$("video#mainVideo").attr("src",CurDir + $("#"+id+" > div:nth-child(2) > a:nth-child(1)").text());
+    });*/
+	$(".modal-title").text("Video Player: " + $("#"+id+" > div:nth-child(2) > a:nth-child(1)").text());
+	$('#myModal').on('hidden.bs.modal', function () {
+	$("#mainVideo")[0].pause(); $("video#mainVideo").removeAttr("src"); 
+	})
+
+	$("video#mainVideo").attr("src",CurDir + $("#"+id+" > div:nth-child(2) > a:nth-child(1)").text().replace("#",""));
 }
 $(window).bind("popstate", function(e) {
 	if (!e.originalEvent.state.LoadNewPage) return;
