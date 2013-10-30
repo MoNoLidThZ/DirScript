@@ -96,7 +96,7 @@ function ViewVideo( id ){
 	$("#mainVideo")[0].pause(); $("video#mainVideo").removeAttr("src"); 
 	})
 
-	$("video#mainVideo").attr("src",CurDir + $("#"+id+" > div:nth-child(2) > a:nth-child(1)").text().replace("#",""));
+	$("video#mainVideo").attr("src",CurDir + "/" + $("#"+id+" > div:nth-child(2) > a:nth-child(1)").text().replace("#",""));
 }
 $(window).bind("popstate", function(e) {
 	if (!e.originalEvent.state.LoadNewPage) return;
