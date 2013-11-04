@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 $THUMBNAIL_FOLDER = "_thumbnails";
 //Files to be Hidden
 $HIDDEN_FILES[] = "Thumbs.db";
@@ -28,6 +28,7 @@ $dong[] = "(ง ͠° ͟ل͜ ͡°)ง ᴍᴀsᴛᴇʀ ʏᴏᴜʀ ᴅᴏɴɢᴇʀ,
 $dong[] = "ᕙ༼ຈل͜ຈ༽ᕗ do you even lift your﻿ dongers ᕙ༼ຈل͜ຈ༽ᕗ";
 $dong[] = "༼ ºل͟º ༽ raise your mudgolems! ༼ ºل͟º ༽";
 $dong[] = "༼ ºل͟º ༽ YOU EITHER DIE A DONG OR LIVE LONG ENOUGH TO BECAME A DONGER ༼ ºل͟º ༽";
+$dong[] = "༼ つ ◕_◕ ༽つ Give DIRETIDE";
 //Color Class for Category Container
 /*Available colors:
 	"default" = Gray
