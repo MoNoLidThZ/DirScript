@@ -63,7 +63,7 @@ class Lister {
 		switch($this->drawctype){
 			case "image";
 			foreach ( $array as $data ){
-				echo($this->GetImageLink($this->EncURL($this->CurDir.$data[1]),urlencode($data[1])));
+				echo($this->GetImageLink($this->EncURL($this->CurDir.$data[1]),($data[1])));
 			}
 			break;
 			case "video";
