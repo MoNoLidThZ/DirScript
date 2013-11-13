@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 $THUMBNAIL_FOLDER = "_thumbnails";
 //Files to be Hidden
 $HIDDEN_FILES[] = "Thumbs.db";
