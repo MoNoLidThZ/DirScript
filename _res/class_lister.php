@@ -63,7 +63,7 @@ class Lister {
 		switch($this->drawctype){
 			case "image";
 			foreach ( $array as $data ){
-				echo($this->GetImageLink($this->EncURL($this->CurDir.$data[1]),($data[1])));
+				echo($this->GetImageLink($this->CurDir.$data[1],$data[1]));
 			}
 			break;
 			case "video";
@@ -97,7 +97,7 @@ class Lister {
 	private function GetImageLink( $path ,$name )
 	{
 		global $THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT;
-		return "<div class=\"image item\"><a href=\"".$path."\"><div class=\"imgbox\">".$this->LazyLoadImage("?img=".$path,$THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT)."</div></a> $name</div>\n";
+		return "<div class=\"image item\"><a href=\"".$this->EncURL($path)."\"><div class=\"imgbox\">".$this->LazyLoadImage("?img=".$path,$THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT)."</div></a> $name</div>\n";
 	}
 	private function LazyLoadImage( $imgpath, $width, $height, $id = NULL, $class = NULL ){
 		return "<img ".($id ? "id=\"i-".$id."\"": "")." class=\"lazy ".$class."\" src=\"_res/grey.gif\" data-original=\"$imgpath\" width=$width 	height=$height alt=\"$img\">";
