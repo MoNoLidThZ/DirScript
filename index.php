@@ -5,7 +5,7 @@ require("_res/file_icons.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
-$VERSION = "2.1.2";
+$VERSION = "2.2";
 // Handlers
 $num = rand(0,(count($dong) - 1));
 
@@ -26,17 +26,20 @@ $dirs = count($Directory) - 1;
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo($pagetitle.$_GET["b"]); ?></title>
-<link href="_res/css/start/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
-<link href="_res/css/bootstrap.min.css" rel="stylesheet">
-<link href="_res/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="_res/css/popcorn.css" rel="stylesheet">
-<link href="_res/css/core.css" rel="stylesheet">
-<script src="_res/js/jquery-1.9.1.js"></script>
-<script async src="_res/js/jquery-ui-1.10.3.custom.min.js"></script>
-<script async src="_res/js/jquery.lazyload.min.js"></script>
-<script async src="_res/js/bootstrap.min.js"></script>
-<script async src="_res/js/popcorn.min.js"></script>
-<script async src="_res/js/dir_ls.js"></script>
+<link href="http://static.monolidthz.com/jquery/css/start/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+<link href="http://static.monolidthz.com/bootstrap-v3/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://static.monolidthz.com/bootstrap-v3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="http://static.monolidthz.com/popcorn/css/popcorn-sdl.css" rel="stylesheet">
+<link href="http://static.monolidthz.com/lightbox/css/lightbox.css" rel="stylesheet">
+<link href="http://static.monolidthz.com/silkicons/silk-sprite.css" rel="stylesheet">
+<link href="http://static.monolidthz.com/SPKZDirScript/css/core.css" rel="stylesheet">
+<script src="http://static.monolidthz.com/jquery/js/jquery-1.9.1.js"></script>
+<script async src="http://static.monolidthz.com/jquery/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script async src="http://static.monolidthz.com/jquery/js/jquery.lazyload.min.js"></script>
+<script async src="http://static.monolidthz.com/bootstrap-v3/js/bootstrap.min.js"></script>
+<script async src="http://static.monolidthz.com/popcorn/js/popcorn.js"></script>
+<script async src="http://static.monolidthz.com/SPKZDirScript/js/dir_ls.js"></script>
+<script async src="http://static.monolidthz.com/lightbox/js/lightbox-2.6.min.js"></script>
 </head>
 <body>
 <div class="container" id="body">

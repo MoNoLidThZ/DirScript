@@ -35,14 +35,13 @@ class Lister {
 	private function PrintContent($data){
 		$contentid = sprintf("%u", crc32($data[1]));
 		echo('<div class="row item" id="'.$contentid.'">');
-		echo('<div class="col-md-1 col-sm-1 col-xs-1 text-right">'.$this->GetExtImage($data[1],$contentid).'</div>');//File Ext Image
+		echo('<div class="col-md-1 col-sm-1 col-xs-1">'.$this->GetExtImage($data[1],$contentid).'</div>');//File Ext Image
 		echo('<div class="col-md-7 col-sm-9 col-xs-5"><a href="'.($this->drawctype == "folder" ? "?b=".$this->EncURL($this->CurDir.$data[1]): $this->EncURL($this->CurDir.$data[1]))."\" data-parent=\"".$this->uniqueid."\">".$data[1]."</a></div>\n");
 		echo('<div class="col-md-1 col-sm-2 col-xs-4">'.($data[2] ? $this->FileSize($data[2]) :"Folder").'</div>');//File Size
 		echo('<div class="col-md-3 hidden-sm hidden-xs"><time datetime="'.date("Y-m-d\TH:i:sP" , $data[0]).'">'.date("D d F Y h:i:s A", $data[0]).'</time></div>');
 		echo('</div>'."\n");
 	}
 	private function PrintContentVideo($data){
-		global $ICON_FOLDER;
 		$fn = explode(".",$data[1]);
 		$ext = strtolower($fn[count($fn) - 1]);
 		$contentid = sprintf("%u", crc32($data[1]));
@@ -50,7 +49,7 @@ class Lister {
 		echo('<div class="col-md-1 col-sm-1 col-xs-1 text-right">'.$this->GetExtImage($data[1],$contentid).'</div>');//File Ext Image
 		if(IsVideoHTML5($data[1])){
 		echo('<div class="col-md-6 col-sm-8 col-xs-5"><a href="?download='.rawurlencode($this->CurDir.$data[1])."\">".$data[1]."</a></div>\n");
-		echo('<div class="col-md-1 col-sm-1 col-xs-1"><a title="Click here to watch: '.$data[1].'" class="ViewVideo" href="javascript:ViewVideo('.$contentid.');" data-mime="video/'.$ext.'">'.$this->LazyLoadImage($ICON_FOLDER."/eye.png",16,16)."</a></div>\n");
+		echo('<div class="col-md-1 col-sm-1 col-xs-1"><a title="Click here to watch: '.$data[1].'" class="ViewVideo" href="javascript:ViewVideo('.$contentid.');" data-mime="video/'.$ext.'">'.$this->GetSilkIcon("ui-silk-eye")."</a></div>\n");
 		}else{
 		echo('<div class="col-md-7 col-sm-9 col-xs-5"><a href="?download='.rawurlencode($this->CurDir.$data[1])."\">".$data[1]."</a></div>\n");
 		}
@@ -97,17 +96,18 @@ class Lister {
 	private function GetImageLink( $path ,$name )
 	{
 		global $THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT;
-		return "<div class=\"image item\"><a href=\"".$this->EncURL($path)."\"><div class=\"imgbox\">".$this->LazyLoadImage("?img=".$path,$THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT)."</div></a> $name</div>\n";
+		$contentid = sprintf("%u", crc32($name));
+		return "<div class=\"image item\"><a href=\"".$this->EncURL($path)."\" data-lightbox=\"$contentid\"><div class=\"imgbox\">".$this->LazyLoadImage("?img=".$path,$THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT)."</div></a> $name</div>\n";
 	}
 	private function LazyLoadImage( $imgpath, $width, $height, $id = NULL, $class = NULL ){
 		return "<img ".($id ? "id=\"i-".$id."\"": "")." class=\"lazy ".$class."\" src=\"_res/grey.gif\" data-original=\"$imgpath\" width=$width 	height=$height alt=\"$img\">";
 	}
 	private function GetExtImage($fn,$cntid){
-		global $ICON_EXT,$ICON_FOLDER;
+		global $ICON_EXT;
 		$fn = explode(".",$fn);
 		$ext = strtolower($fn[count($fn) - 1]);
-		if($this->drawctype == "folder") return $this->LazyLoadImage($ICON_FOLDER."/".$ICON_EXT["folder"],16,16);
-		return $ICON_EXT[$ext] ? $this->LazyLoadImage($ICON_FOLDER."/".$ICON_EXT[$ext],16,16) : $this->LazyLoadImage($ICON_FOLDER."/".$ICON_EXT["unknown"],16,16,$cntid);
+		if($this->drawctype == "folder") return $this->GetSilkIcon($ICON_EXT["folder"],"pull-right");
+		return $ICON_EXT[$ext] ? $this->GetSilkIcon($ICON_EXT[$ext],"pull-right") : $this->GetSilkIcon($ICON_EXT["unknown"],"pull-right");
 	}
 	private function DrawHTML5VideoTag($data){
 		//$finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -126,6 +126,10 @@ class Lister {
 	private function EncURL ( $TheVal ) //Url Encode, with slashes
 	{ 
 		return str_replace("%2F","/",rawurlencode($TheVal));
+	} 
+	private function GetSilkIcon ( $classname , $moarclass = NULL) //Url Encode, with slashes
+	{ 
+		return '<span class="ui-silk '.$classname.($moarclass ? " ".$moarclass : NULL).'"></span>';
 	} 
 }
 ?>

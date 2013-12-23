@@ -27,8 +27,14 @@ $dong[] = "ლ(ಠ_ಠლ) Screw this donger ლ(ಠ_ಠლ)";
 $dong[] = "(ง ͠° ͟ل͜ ͡°)ง ᴍᴀsᴛᴇʀ ʏᴏᴜʀ ᴅᴏɴɢᴇʀ, ᴍᴀsᴛᴇʀ ᴛʜᴇ ᴇɴᴇᴍʏ (ง ͠° ͟ل͜ ͡°)ง";
 $dong[] = "ᕙ༼ຈل͜ຈ༽ᕗ do you even lift your﻿ dongers ᕙ༼ຈل͜ຈ༽ᕗ";
 $dong[] = "༼ ºل͟º ༽ raise your mudgolems! ༼ ºل͟º ༽";
-$dong[] = "༼ ºل͟º ༽ YOU EITHER DIE A DONG OR LIVE LONG ENOUGH TO BECAME A DONGER ༼ ºل͟º ༽";
+$dong[] = "༼ ºل͟º ༽You either die a DONG, or live long enough to become the DONGER ༼ ºل͟º ༽";
+$dong[] = " ༼ ºل͟º༼ ºل͟º༼ ºل͟º༼ ºل͟º ༽ºل͟º ༽ºل͟º ༽You either die a DONG, or live long enough to become the DONGER༼ ºل͟º༼ ºل͟º༼ ºل͟º༼ ºل͟º ༽ºل͟º ༽ºل͟º ༽";
 $dong[] = "༼ つ ◕_◕ ༽つ Give DIRETIDE";
+$dong[] = "༼ᕗຈل͜ຈ༽ᕗ Drop Bows on 'em ༼ᕗຈل͜ຈ༽ᕗ";
+$dong[] = "█▄༼ຈل͜ຈ༽▄█ yeah i work out";
+$dong[] = "[̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅] Mo' money, mo' Dongers [̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅]";
+$dong[] = " ༼ ͡■ل͜ ͡■༽ OPPA DONGER STYLE ༼ ͡■ل͜ ͡■༽  ";
+$dong[] = "<ᴍᴇssᴀɢᴇ ᴅᴏɴɢᴇʀᴇᴅ>";
 //Color Class for Category Container
 /*Available colors:
 	"default" = Gray
