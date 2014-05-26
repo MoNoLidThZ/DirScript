@@ -5,7 +5,7 @@ require("_res/config_advanced.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
-$VERSION = "2.2";
+$VERSION = "2.3";
 // Handlers
 $num = rand(0,(count($dong) - 1));
 
