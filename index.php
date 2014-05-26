@@ -1,7 +1,7 @@
 <?php //If you want to edit config, Please go to Config.php in _res folder!
 //Don't touch the code below this line unless you know what you're doing!
-require("_res/config.php");
-require("_res/file_icons.php");
+require("_res/config_basic.php");
+require("_res/config_advanced.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
