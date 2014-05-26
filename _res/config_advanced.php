@@ -92,4 +92,3 @@ $ICON_EXT['ogg'] = "ui-silk-film";
 $ICON_EXT['unknown'] = "ui-silk-page";
 //Folder Icon
 $ICON_EXT['folder'] = "ui-silk-folder";?>
-?>
