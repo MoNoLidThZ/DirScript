@@ -1,5 +1,4 @@
 <?php
-
 ////// FUNCTIONS /////
 //Basic Check File Type
 function CheckFileType( $fn ){
@@ -31,7 +30,6 @@ if(IsImage($fn)){
 	return "file";
 }
 }
-
 //Is $i an Image?
 function IsImage( $i )
 {
@@ -44,7 +42,6 @@ substr_count( $i, ".png" ) > 0 )
 {
 return true;
 }
-
 return false;
 }
 //Is $i a Video?
@@ -123,5 +120,17 @@ return '<div id="error" class="panel panel-danger">
   </div>
   <div id="error-b" class="panel-body">'.$data.'</div></div>';
 }
+function MakeErrorJSON( $title, $data )
+{
+$GLOBALS["error"] = true;
+return json_encode(array(Success => false,Data => '<div id="error" class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">Error: '.$title.'</h3>
+  </div>
+  <div id="error-b" class="panel-body">'.$data.'</div></div>'));
+}
 
+function Redirect($url){
+header( 'Location: '.$url ) ;
+}
 ?>

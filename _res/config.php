@@ -62,4 +62,6 @@ $CONTENT_SORT[] = array("image","Image");
 $CONTENT_SORT[] = array("file","File");
 //HTML5 MIME Types
 $MIME['mp4'] = "video/mp4";
+//User agent to redirect
+$ALLOWED_AGENTS[] = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0)"; //Internet Download Manager
 ?>
