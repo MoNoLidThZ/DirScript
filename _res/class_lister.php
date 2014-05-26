@@ -22,12 +22,14 @@ class Lister {
 		$this->PrintCloseTag();
 	}
 	private function PrintOpenTag(){
-		echo '<section><div id="'.$this->uniqueid.'" class="panel panel-'.$this->cssclas.'" style="display:none;">';
-		echo("");
-		echo '<div class="panel-heading">';
-    	echo '<h3 class="panel-title"> <button id="close-'.$this->uniqueid.'" data-target="'.$this->uniqueid.'" type="button" class="close glyphicon glyphicon-chevron-up" aria-hidden="true"></button><button id="open-'.strtolower($this->uniqueid).'" data-target="'.$this->uniqueid.'" type="button" class="close glyphicon glyphicon-chevron-down" aria-hidden="true" style="display:none;"></button>'.$this->Name."s".' ('. count( $this->content ) .')</h3>';
-  		echo('</div>');
-  		echo '<div id="'.strtolower($this->uniqueid).'-b" class="panel-body">'."\n";
+		$cntcount = count( $this->content );
+		$lowerid = strtolower($this->uniqueid);
+		echo <<<OPENTAG
+		<section><div id="{$this->uniqueid}" class="panel panel-{$this->cssclas}" style="display:none;">
+<div class="panel-heading">
+<h3 class="panel-title"> <button id="close-{$lowerid}" data-target="{$this->uniqueid}" type="button" class="close glyphicon glyphicon-chevron-up" aria-hidden="true"></button><button id="open-{$lowerid}" data-target="{$this->uniqueid}" type="button" class="close glyphicon glyphicon-chevron-down" aria-hidden="true" style="display:none;"></button>{$this->Name}s ({$cntcount})</h3>
+</div><div id="{$lowerid}-b" class="panel-body">\n
+OPENTAG;
 	}
 	private function PrintCloseTag(){
 		echo "</div></div></section>";

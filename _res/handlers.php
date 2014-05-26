@@ -57,8 +57,12 @@ exit();
 
 function HandleDownloadFile()
 {
+global($ALLOWED_AGENTS);
 $file = implode("/",array_filter(explode("/",$_GET["download"]))); 
 if (!$file) return;
+if (in_array($_SERVER["HTTP_USER_AGENT"],$ALLOWED_AGENTS)){
+	Redirect($file)
+}
 require("class_resumedownload.php");
 set_time_limit(0);
 $download = new ResumeDownload($file,0);
