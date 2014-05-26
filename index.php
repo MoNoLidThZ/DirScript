@@ -5,7 +5,7 @@ require("_res/config_advanced.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
-$VERSION = "2.3";
+$VERSION = "2.4";
 // Handlers
 $num = rand(0,(count($dong) - 1));
 
@@ -36,14 +36,15 @@ $dirs = count($Directory) - 1;
 <script src="http://static.monolidthz.com/jquery/js/jquery-1.9.1.js"></script>
 <script async src="http://static.monolidthz.com/jquery/js/jquery-ui-1.10.2.custom.min.js"></script>
 <script async src="http://static.monolidthz.com/jquery/js/jquery.lazyload.min.js"></script>
+<script async src="http://static.monolidthz.com/jquery/js/jquery.animateNumber.min.js"></script>
 <script async src="http://static.monolidthz.com/bootstrap-v3/js/bootstrap.min.js"></script>
 <script async src="http://static.monolidthz.com/popcorn/js/popcorn.js"></script>
-<script async src="http://static.monolidthz.com/SPKZDirScript/js/dir_ls.js"></script>
+<script async src="http://static.monolidthz.com/SPKZDirScript/js/SPKZDirListingScript.js"></script>
 <script async src="http://static.monolidthz.com/lightbox/js/lightbox-2.6.min.js"></script>
 </head>
 <body>
 <div class="container" id="body">
-<h1 style="text-align:center;"><?php echo($showmydongers ? $dong[$num] : $pagetitle); ?></h1>
+<h1 style="text-align:center;" id="header"><?php echo($showmydongers ? $dong[$num] : $pagetitle); ?></h1>
 <div id="breadcrumb">
 <ul class="breadcrumb well well-sm">
   <?php if($dirs == -1)
@@ -122,13 +123,14 @@ if($filecount < 1){
         <div class="collapse navbar-collapse navbar-ex1-collapse pull-right">
           <ul class="nav navbar-nav">
       <?php  
-	  $i=0; $k=0;
+	  $k=0;
 	  foreach($CONTENT_SORT as $category) {
-		  if(count( $dirdata[$CONTENT_SORT[$i][0]] ) == 0) {$i++; continue; } 
+		$key = $category[0];
+		  if(count( $dirdata[$key] ) == 0) { continue; } 
 		   ?>
-      <li><a href="#<?php echo $k ?>"><?php echo $CONTENT_SORT[$i][1] ?>s <span class="badge"><?php echo count( $dirdata[$CONTENT_SORT[$i][0]] ) ?></span></a></li>
+      <li><a href="#<?php echo $k ?>"><?php echo $category[1] ?>s <span class="itemcount label label-<?=$BOOTSTRAP_CLASS[$key."s"]?>"><?php echo count( $dirdata[$key] ) ?></span></a></li>
       <?php $i++; $k++;}
-	  unset($i,$k,$category);?>
+	  unset($k,$key,$category);?>
     </ul>
         </div>
       </nav>
@@ -174,7 +176,6 @@ if($filecount < 1){
 	</div>
 	</div>
 	</div>
-</div>
 <script>
 var CurDir = "<?php echo($safedir ? $safedir."/" : NULL); ?>";
 var PageTitle = "<?php echo $pagetitle ?>";
