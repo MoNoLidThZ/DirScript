@@ -5,7 +5,7 @@ require("_res/config_advanced.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
-$VERSION = "2.4";
+$VERSION = "2.4a";
 // Handlers
 $num = rand(0,(count($dong) - 1));
 
@@ -26,23 +26,23 @@ $dirs = count($Directory) - 1;
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo($pagetitle.$_GET["b"]); ?></title>
-<link href="http://static.monolidthz.com/jquery/css/start/jquery-ui-1.10.2.custom.css" rel="stylesheet">
-<link href="http://static.monolidthz.com/bootstrap-v3/css/bootstrap.min.css" rel="stylesheet">
-<link href="http://static.monolidthz.com/bootstrap-v3/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="http://static.monolidthz.com/popcorn/css/popcorn-sdl.css" rel="stylesheet">
-<link href="http://static.monolidthz.com/lightbox/css/lightbox.css" rel="stylesheet">
-<link href="http://static.monolidthz.com/silkicons/silk-sprite.css" rel="stylesheet">
-<link href="http://static.monolidthz.com/SPKZDirScript/css/core.css" rel="stylesheet">
-<script src="http://static.monolidthz.com/jquery/js/jquery-1.9.1.js"></script>
-<script async src="http://static.monolidthz.com/jquery/js/jquery-ui-1.10.2.custom.min.js"></script>
-<script async src="http://static.monolidthz.com/jquery/js/jquery.lazyload.min.js"></script>
-<script async src="http://static.monolidthz.com/jquery/js/jquery.animateNumber.min.js"></script>
-<script async src="http://static.monolidthz.com/bootstrap-v3/js/bootstrap.min.js"></script>
-<script async src="http://static.monolidthz.com/popcorn/js/popcorn.js"></script>
-<script async src="http://static.monolidthz.com/SPKZDirScript/js/SPKZDirListingScript.js"></script>
-<script async src="http://static.monolidthz.com/lightbox/js/lightbox-2.6.min.js"></script>
+<link href="//static.monolidthz.com/jquery/css/start/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+<link href="//static.monolidthz.com/bootstrap-v3/css/bootstrap.min.css" rel="stylesheet">
+<link href="//static.monolidthz.com/bootstrap-v3/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="//static.monolidthz.com/popcorn/css/popcorn-sdl.css" rel="stylesheet">
+<link href="//static.monolidthz.com/lightbox/css/lightbox.css" rel="stylesheet">
+<link href="//static.monolidthz.com/silkicons/silk-sprite.css" rel="stylesheet">
+<link href="//static.monolidthz.com/SPKZDirScript/css/core.css" rel="stylesheet">
+<script src="//static.monolidthz.com/jquery/js/jquery-1.11.1.min.js"></script>
+<script async src="//static.monolidthz.com/jquery/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script async src="//static.monolidthz.com/jquery/js/jquery.lazyload.min.js"></script>
+<script async src="//static.monolidthz.com/jquery/js/jquery.animateNumber.min.js"></script>
+<script async src="//static.monolidthz.com/bootstrap-v3/js/bootstrap.min.js"></script>
+<script async src="//static.monolidthz.com/popcorn/js/popcorn.js"></script>
+<script async src="//static.monolidthz.com/SPKZDirScript/js/SPKZDirListingScript.js"></script>
+<script async src="//static.monolidthz.com/lightbox/js/lightbox-2.6.min.js"></script>
 </head>
-<body>
+<body  itemscope itemtype="//schema.org/WebPage">
 <div class="container" id="body">
 <h1 style="text-align:center;" id="header"><?php echo($showmydongers ? $dong[$num] : $pagetitle); ?></h1>
 <div id="breadcrumb">
@@ -91,7 +91,7 @@ if ($entry == 'index.htm') exit();
 if ($entry == 'index.php') exit();
 if ($entry == 'index.asp') exit();
 if ( is_dir( $DIR . "/" . $entry ) ) {$dirdata['folder'][] = array( filemtime( $DIR . "/" . $entry ), $entry ); continue;}
-$dirdata[CheckFileType($entry)][] = array( filemtime( $DIR . "/" . $entry ), $entry , filesize($DIR . "/" . $entry) );
+$dirdata[CheckFileType($entry)][$entry] = array( filemtime( $DIR . "/" . $entry ), $entry , filesize($DIR . "/" . $entry) );
 }
 $uid = 0; $filecount = 0;
 foreach($CONTENT_SORT as $category){
@@ -137,7 +137,7 @@ if($filecount < 1){
 </div>
 
 <div id="footer"><span class="container">
-</span><a href="https://github.com/MoNoLidThZ/SPKZ_dir_script">Directory Listing Script</a> by <a href="http://spkz.monolidthz.com">$!nG1_ePl[A]yErZ</a> V.<?php echo($VERSION);?></div>
+</span><a href="https://github.com/MoNoLidThZ/SPKZ_dir_script">Directory Listing Script</a> by <a href="//spkz.monolidthz.com">$!nG1_ePl[A]yErZ</a> V.<?php echo($VERSION);?></div>
 <div id="loading" class="overlay">
  <h1 class="text-center"> <img id="loading-image" src="_res/ajax-loader.gif" alt="Loading..." />Loading...</h1> 
 </div>

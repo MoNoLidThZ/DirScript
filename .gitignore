@@ -43,3 +43,4 @@ images/
 *.ogg
 *.ogv
 *.webm
+_res/ajax.php
