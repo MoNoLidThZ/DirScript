@@ -1,11 +1,14 @@
-<?php function HandleImageOutput()
+<?php 
+//HandleImageOutput is a CPU Intensive Function! that's why we need caching and stuff (aka "_thumbnails" folder)
+function HandleImageOutput()
 {
 global $THUMBNAIL_FOLDER, $THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT;
-
-$image = implode("/",array_filter(explode("/",$_GET["img"])));
+$img = $_GET['imgE'] ? base64_decode($_GET['imgE']) : $_GET['img'];
+$image = implode("/",array_filter(explode("/",$img)));
+// $image = $_GET["img"];
 if (!$image) return;
 
-$imagecache = $THUMBNAIL_FOLDER . "/" . md5( $THUMBNAIL_WIDTH . $THUMBNAIL_HEIGHT . $image ) . ".jpg";
+$imagecache = $THUMBNAIL_FOLDER . "/" . $THUMBNAIL_WIDTH . "x" . $THUMBNAIL_HEIGHT. "_" . md5_file( $image ) . ".jpg";
 
 error_reporting(0);
 $im = @imagecreatefromjpeg( $imagecache );

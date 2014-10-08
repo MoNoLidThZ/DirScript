@@ -1,4 +1,5 @@
 <?php
+error_reporting(0); //Not a real solution to a problem
 require("config_basic.php"); 
 require("config_advanced.php"); 
 require("functions.php");
@@ -34,7 +35,7 @@ if ( in_array( $entry, $HIDDEN_FILES) ) continue;
 if ( in_array( $entry, $HIDDEN_DIRS) ) continue;
 
 if ( is_dir( $DIR . "/" . $entry ) ) {$dirdata['folder'][] = array( filemtime( $DIR . "/" . $entry ), $entry ); continue;}
-$dirdata[CheckFileType($entry)][] = array( filemtime( $DIR . "/" . $entry ), $entry , filesize($DIR . "/" . $entry) );
+$dirdata[CheckFileType($entry)][$entry] = array( filemtime( $DIR . "/" . $entry ), $entry , filesize($DIR . "/" . $entry) );
 }
 }
 //switch($_GET['ajax']){
@@ -53,7 +54,7 @@ if($k == $dirs){
 }elseif($k > 0){
 	$Breadcrumb[] = '<li><a href="?b='; 
 	for ($i = 0; $i <= $k; $i++) {
-		$Breadcrumb[] = (urlencode($Directory[$i])."/");
+		$Breadcrumb[] = (rawurlencode($Directory[$i])."/");
 	}
 	$Breadcrumb[] = '">'.$v.'</a></li>';
 }else{

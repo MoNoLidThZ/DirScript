@@ -2,7 +2,7 @@
 $name = "$!nG1_ePl[A]yErZ";	//Your name here
 $pagetitle = $name." - Index of /";
 //Use Randomly selcected header or page title?
-$showmydongers = true;
+$showmydongers = false;
 //These are randomly selected header.
 $dong[] = "ヽ༼ຈل͜ຈ༽ﾉ your dongers seem raised ヽ༼ຈل͜ຈ༽ﾉ";
 $dong[] = "ヽ༼ຈل͜ຈ༽ﾉ raise your dongers ヽ༼ຈل͜ຈ༽ﾉ";

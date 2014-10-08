@@ -18,6 +18,7 @@ class JSONLister {
 	}
 	public function Draw(){
 		$ret[] = $this->PrintOpenTag();
+		ksort($this->content,SORT_NATURAL);
 		$ret[] = $this->PrintContentArray($this->content);
 		$ret[] = $this->PrintCloseTag();
 		return implode("",$ret);
@@ -79,6 +80,9 @@ OPENTAG;
 			break;
 			case "audio";
 			//Not yet implemented
+			foreach ( $array as $data ){
+				$ret[] = $this->PrintContent($data);
+			}
 			break;
 			case "folder";
 			foreach ( $array as $data ){
@@ -105,7 +109,7 @@ OPENTAG;
 	{
 		global $THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT;
 		$contentid = sprintf("%u", crc32($name));
-		return "<div class=\"image item\"><a href=\"".$this->EncURL($path)."\" data-lightbox=\"$contentid\"><div class=\"imgbox\">".$this->LazyLoadImage("?img=".$path,$THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT)."</div></a> $name</div>\n";
+		return "<div class=\"image item\"><a href=\"".$this->EncURL($path)."\" data-lightbox=\"$contentid\"><div class=\"imgbox\">".$this->LazyLoadImage("?imgE=".base64_encode($path),$THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT)."</div></a> $name</div>\n";
 	}
 	private function LazyLoadImage( $imgpath, $width, $height, $id = NULL, $class = NULL ){
 		return "<img ".($id ? "id=\"i-".$id."\"": "")." class=\"lazy ".$class."\" src=\"_res/grey.gif\" data-original=\"$imgpath\" width=$width 	height=$height alt=\"$img\">";
