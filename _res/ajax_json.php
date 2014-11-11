@@ -5,6 +5,7 @@ require("config_advanced.php");
 require("functions.php");
 require("class_lister_json.php");
 require("handlers.php");
+header( 'Content-Type: application/json' );
 if($_GET["b"]){
 $Browse = rawurldecode($_GET["b"]);
 }else{
