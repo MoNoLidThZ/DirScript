@@ -5,7 +5,7 @@ require("_res/config_advanced.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
-$VERSION = "2.5";
+$VERSION = "2.5a";
 $BRANCH = "master";
 // Handlers
 $num = rand(0,(count($dong) - 1));
@@ -27,13 +27,7 @@ $dirs = count($Directory) - 1;
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo($pagetitle.$_GET["b"]); ?></title>
-<link href="//static.monolidthz.com/jquery/css/start/jquery-ui-1.10.2.custom.css" rel="stylesheet">
-<link href="//static.monolidthz.com/bootstrap-v3/css/bootstrap.min.css" rel="stylesheet">
-<link href="//static.monolidthz.com/bootstrap-v3/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="//static.monolidthz.com/popcorn/css/popcorn-sdl.css" rel="stylesheet">
-<link href="//static.monolidthz.com/lightbox/css/lightbox.css" rel="stylesheet">
-<link href="//static.monolidthz.com/silkicons/silk-sprite.css" rel="stylesheet">
-<link href="//static.monolidthz.com/SPKZDirScript/css/core.css" rel="stylesheet">
+<link href="//static.monolidthz.com/SPKZDirScript/css/style_packed.css" rel="stylesheet">
 </head>
 <body  itemscope itemtype="//schema.org/WebPage">
 <div class="container" id="body">
@@ -169,14 +163,7 @@ if($filecount < 1){
 	</div>
 	</div>
 	</div>
-<script src="//static.monolidthz.com/jquery/js/jquery-2.1.1.min.js"></script>
-<script async src="//static.monolidthz.com/jquery/js/jquery-ui.min.js"></script>
-<script async src="//static.monolidthz.com/jquery/js/jquery.lazyload.min.js"></script>
-<script async src="//static.monolidthz.com/jquery/js/jquery.animateNumber.min.js"></script>
-<script async src="//static.monolidthz.com/bootstrap-v3/js/bootstrap.min.js"></script>
-<script async src="//static.monolidthz.com/popcorn/js/popcorn.js"></script>
-<script async src="//static.monolidthz.com/SPKZDirScript/js/SPKZDirListingScript.js"></script>
-<script async src="//static.monolidthz.com/lightbox/js/lightbox-2.6.min.js"></script>
+<script src="//static.monolidthz.com/SPKZDirScript/js/script_packed.js"></script>
 <script>
 var CurDir = "<?php echo($safedir ? $safedir."/" : NULL); ?>";
 var PageTitle = "<?php echo $pagetitle ?>";
