@@ -5,7 +5,8 @@ require("_res/config_advanced.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
-$VERSION = "2.4b";
+$VERSION = "2.5";
+$BRANCH = "master";
 // Handlers
 $num = rand(0,(count($dong) - 1));
 
@@ -129,7 +130,7 @@ if($filecount < 1){
 </div>
 
 <div id="footer"><span class="container">
-</span><a href="https://github.com/MoNoLidThZ/SPKZ_dir_script">Directory Listing Script</a> by <a href="//spkz.monolidthz.com">$!nG1_ePl[A]yErZ</a> V.<?php echo($VERSION);?></div>
+</span><a href="https://github.com/MoNoLidThZ/SPKZ_dir_script">Directory Listing Script</a> by <a href="//spkz.monolidthz.com">$!nG1_ePl[A]yErZ</a> V.<?=$VERSION?> (<?=$BRANCH?>)</div>
 <div id="loading" class="overlay">
  <h1 class="text-center"> <img id="loading-image" src="_res/ajax-loader.gif" alt="Loading..." />Loading...</h1> 
 </div>
@@ -168,8 +169,8 @@ if($filecount < 1){
 	</div>
 	</div>
 	</div>
-<script src="//static.monolidthz.com/jquery/js/jquery-1.11.1.min.js"></script>
-<script async src="//static.monolidthz.com/jquery/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="//static.monolidthz.com/jquery/js/jquery-2.1.1.min.js"></script>
+<script async src="//static.monolidthz.com/jquery/js/jquery-ui.min.js"></script>
 <script async src="//static.monolidthz.com/jquery/js/jquery.lazyload.min.js"></script>
 <script async src="//static.monolidthz.com/jquery/js/jquery.animateNumber.min.js"></script>
 <script async src="//static.monolidthz.com/bootstrap-v3/js/bootstrap.min.js"></script>
