@@ -6,6 +6,7 @@ $HIDDEN_FILES[] = "index.php";
 $HIDDEN_FILES[] = ".htaccess";
 $HIDDEN_FILES[] = ".htpasswd";
 $HIDDEN_FILES[] = "favicon.ico";
+$HIDDEN_FILES[] = "web.config"; //Damn you IIS 7.0
 //Dirs to be hidden
 $HIDDEN_DIRS[] = "_res";
 $HIDDEN_DIRS[] = $THUMBNAIL_FOLDER;
@@ -77,6 +78,7 @@ $ICON_EXT['zip'] = "ui-silk-compress";
 $ICON_EXT['ace'] = "ui-silk-compress";
 $ICON_EXT['uha'] = "ui-silk-compress";
 $ICON_EXT['7z'] = "ui-silk-compress";
+$ICON_EXT['bz2'] = "ui-silk-compress";
 $ICON_EXT['log'] = "ui-silk-page-white-text";
 $ICON_EXT['txt'] = "ui-silk-page-white-text";
 $ICON_EXT['avi'] = "ui-silk-film";
