@@ -5,7 +5,7 @@ require("_res/config_advanced.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
-$VERSION = "2.5a";
+$VERSION = "2.5b";
 $BRANCH = "master";
 // Handlers
 $num = rand(0,(count($dong) - 1));
@@ -27,7 +27,7 @@ $dirs = count($Directory) - 1;
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo($pagetitle.$_GET["b"]); ?></title>
-<link href="//static.monolidthz.com/SPKZDirScript/css/style_packed.css" rel="stylesheet">
+<link href="//spkz.gamerxp.in.th/public/SPKZDirScript/css/style_packed.css" rel="stylesheet">
 </head>
 <body  itemscope itemtype="//schema.org/WebPage">
 <div class="container" id="body">
@@ -59,8 +59,10 @@ if ( substr_count( $Browse, ".." ) > 0 )
 {
 echo MakeError("What do you think you're doing?","You don't have permission to access upper level folder!");
 //exit();
+}elseif(!is_dir("./".$safedir)){
+	echo MakeError("Unknown Operation","You cannot dir a file");
 }elseif(preg_match( "[".implode('|',$HIDDEN_DIRS)."]", $safedir ) > 0){
-echo MakeError("Access Denied","You don't have permission to access this folder!");
+	echo MakeError("Access Denied","You don't have permission to access this folder!");
 }else{
 
 $DIR = "./" . $safedir;
@@ -126,7 +128,7 @@ if($filecount < 1){
 <div id="footer"><span class="container">
 </span><a href="https://github.com/MoNoLidThZ/SPKZ_dir_script">Directory Listing Script</a> by <a href="//spkz.monolidthz.com">$!nG1_ePl[A]yErZ</a> V.<?=$VERSION?> (<?=$BRANCH?>)</div>
 <div id="loading" class="overlay">
- <h1 class="text-center"> <img id="loading-image" src="_res/ajax-loader.gif" alt="Loading..." />Loading...</h1> 
+ <div class="loader">Loading...</div>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div id="videoWrap" title="Video Player" style="display:none; left:0px;" class="modal-dialog">
@@ -163,7 +165,7 @@ if($filecount < 1){
 	</div>
 	</div>
 	</div>
-<script src="//static.monolidthz.com/SPKZDirScript/js/script_packed.js"></script>
+<script src="//spkz.gamerxp.in.th/public/SPKZDirScript/js/script_packed.js"></script>
 <script>
 var CurDir = "<?php echo($safedir ? $safedir."/" : NULL); ?>";
 var PageTitle = "<?php echo $pagetitle ?>";
