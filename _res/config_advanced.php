@@ -5,6 +5,8 @@ $HIDDEN_FILES[] = "Thumbs.db";
 $HIDDEN_FILES[] = "index.php";
 $HIDDEN_FILES[] = ".htaccess";
 $HIDDEN_FILES[] = ".htpasswd";
+$HIDDEN_FILES[] = ".gitattributes";
+$HIDDEN_FILES[] = ".gitignore";
 $HIDDEN_FILES[] = "favicon.ico";
 $HIDDEN_FILES[] = "web.config"; //Damn you IIS 7.0
 //Dirs to be hidden
