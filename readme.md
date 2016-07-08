@@ -1,9 +1,10 @@
-$!nG1_ePl[?]yErZ's Directory Listing Script
+SPKZ's Directory Listing Script
 =======================
 
-Loosely based on Garry's Directory Listing Script V.3.0 (Example: http://ss.monolidthz.com/ )
+Loosely based on Garry's Directory Listing Script V.3.0 (Example: http://w33d.monolidthz.com/ )
 
 Features:
+	Categorized Directory System with item counter
 	File Extension Icons
-	Fully Responsive (Thanks to Bootstrap v3)
-	Download accelerator redirection (Reduce PHP CPU Load)
+	AJAX-Based Loading System
+	Fully-Functional HTML5 History API Implementation
