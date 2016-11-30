@@ -1,0 +1,6 @@
+{
+  "name": "DirScript",
+  "tagline": "SPKZ's Directory Listing Script",
+  "body": "SPKZ's Directory Listing Script\r\n=======================\r\n\r\nLoosely based on Garry's Directory Listing Script V.3.0 (Example: http://w33d.monolidthz.com/ )\r\n\r\nFeatures:\r\n\r\n* Categorized Directory System with item counter\r\n* File Extension Icons\r\n* AJAX-Based Loading System\r\n* Fully-Functional HTML5 History API Implementation\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
