@@ -7,7 +7,7 @@ require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
 $VERSION = "2.5b";
-$BRANCH = "local";
+$BRANCH = "master";
 // Handlers
 $num = rand(0,(count($dong) - 1));
 
