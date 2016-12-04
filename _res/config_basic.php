@@ -1,5 +1,5 @@
 <?php 
-$name = "$!nG1_ePl[A]yErZ";	//Your name here
+$name = "SPKZ's DirScript";	//Your name here
 $pagetitle = $name." - Index of /";
 //Use Randomly selcected header or page title?
 $showmydongers = false;
