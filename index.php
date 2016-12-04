@@ -1,12 +1,13 @@
 <?php //If you want to edit config, Please go to Config.php in _res folder!
 //Don't touch the code below this line unless you know what you're doing!
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 require("_res/config_basic.php");
 require("_res/config_advanced.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
 $VERSION = "2.5b";
-$BRANCH = "master";
+$BRANCH = "local";
 // Handlers
 $num = rand(0,(count($dong) - 1));
 
@@ -27,7 +28,7 @@ $dirs = count($Directory) - 1;
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo($pagetitle.$_GET["b"]); ?></title>
-<link href="//spkz.gamerxp.in.th/public/SPKZDirScript/css/style_packed.css" rel="stylesheet">
+<link href="_res/css/style_packed.css" rel="stylesheet">
 </head>
 <body  itemscope itemtype="//schema.org/WebPage">
 <div class="container" id="body">
@@ -165,7 +166,7 @@ if($filecount < 1){
 	</div>
 	</div>
 	</div>
-<script src="//spkz.gamerxp.in.th/public/SPKZDirScript/js/script_packed.js"></script>
+<script src="_res/js/script_packed.js"></script>
 <script>
 var CurDir = "<?php echo($safedir ? $safedir."/" : NULL); ?>";
 var PageTitle = "<?php echo $pagetitle ?>";
