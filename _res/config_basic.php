@@ -4,6 +4,7 @@ $pagetitle = $name." - Index of /";
 //Use Randomly selcected header or page title?
 $showmydongers = false;
 //These are randomly selected header.
+//Courtesy of /r/raiseyourdongers/
 $dong[] = "ヽ༼ຈل͜ຈ༽ﾉ your dongers seem raised ヽ༼ຈل͜ຈ༽ﾉ";
 $dong[] = "ヽ༼ຈل͜ຈ༽ﾉ raise your dongers ヽ༼ຈل͜ຈ༽ﾉ";
 $dong[] = "ヽ༼ຈل͜ຈ༽ﾉ raise your cauldrons ヽ༼ຈل͜ຈ༽ﾉ";
