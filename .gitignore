@@ -36,7 +36,7 @@
 ehthumbs.db
 Thumbs.db
 
-_thumbnails/*.jpg
+*.jpg
 images/
 *.mp3
 *.mp4
@@ -44,3 +44,4 @@ images/
 *.ogv
 *.webm
 _res/ajax.php
+*.png
