@@ -27,11 +27,7 @@ $dirs = count($Directory) - 1;
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo($pagetitle.$_GET["b"]); ?></title>
-<<<<<<< HEAD
 <link href="_res/css/style_packed.css" rel="stylesheet">
-=======
-<link href="//spkz.gamerxp.in.th/public/SPKZDirScript/css/style_packed.css" rel="stylesheet">
->>>>>>> refs/remotes/origin/master
 </head>
 <body  itemscope itemtype="//schema.org/WebPage">
 <div class="container" id="body">
