@@ -1,5 +1,6 @@
 <?php //If you want to edit config, Please go to Config.php in _res folder!
 //Don't touch the code below this line unless you know what you're doing!
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 require("_res/config_basic.php");
 require("_res/config_advanced.php");
 require("_res/functions.php");

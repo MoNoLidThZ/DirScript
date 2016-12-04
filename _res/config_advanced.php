@@ -8,6 +8,7 @@ $HIDDEN_FILES[] = ".htpasswd";
 $HIDDEN_FILES[] = ".gitattributes";
 $HIDDEN_FILES[] = ".gitignore";
 $HIDDEN_FILES[] = "favicon.ico";
+$HIDDEN_FILES[] = "readme.md"; //Will going to add markdown folder info feature soon...
 $HIDDEN_FILES[] = "web.config"; //Damn you IIS 7.0
 //Dirs to be hidden
 $HIDDEN_DIRS[] = "_res";
