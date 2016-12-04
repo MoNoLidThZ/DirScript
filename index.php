@@ -127,7 +127,7 @@ if($filecount < 1){
 </div>
 
 <div id="footer"><span class="container">
-</span><a href="https://github.com/MoNoLidThZ/SPKZ_dir_script">Directory Listing Script</a> by <a href="//spkz.monolidthz.com">$!nG1_ePl[A]yErZ</a> V.<?=$VERSION?> (<?=$BRANCH?>)</div>
+</span><a href="https://github.com/MoNoLidThZ/SPKZ_dir_script">Directory Listing Script</a> by <a href="https://github.com/MoNoLidThZ">MoNoLidThZ</a> V.<?=$VERSION?> (<?=$BRANCH?>)</div>
 <div id="loading" class="overlay">
  <div class="loader">Loading...</div>
 </div>
