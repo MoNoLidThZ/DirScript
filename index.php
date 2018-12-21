@@ -6,7 +6,7 @@ require("_res/config_advanced.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
-$VERSION = "2.5b";
+$VERSION = "2.6";
 $BRANCH = "master";
 // Handlers
 $num = rand(0,(count($dong) - 1));
@@ -28,7 +28,7 @@ $dirs = count($Directory) - 1;
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo($pagetitle.$_GET["b"]); ?></title>
-<link href="_res/css/style_packed.css" rel="stylesheet">
+<link href="//static.monolidthz.com/SPKZDirScript/css/style_packed.css" rel="stylesheet">
 </head>
 <body  itemscope itemtype="//schema.org/WebPage">
 <div class="container" id="body">
@@ -166,7 +166,7 @@ if($filecount < 1){
 	</div>
 	</div>
 	</div>
-<script src="_res/js/script_packed.js"></script>
+<script src="//static.monolidthz.com/SPKZDirScript/js/script_packed.js"></script>
 <script>
 var CurDir = "<?php echo($safedir ? $safedir."/" : NULL); ?>";
 var PageTitle = "<?php echo $pagetitle ?>";

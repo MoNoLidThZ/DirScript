@@ -102,7 +102,7 @@ OPENTAG;
 	private function GetImageLink( $path ,$name )
 	{
 		global $THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT;
-		$contentid = sprintf("%u", crc32($name));
+		$contentid = $this->EncPath(($path));
 		return "<div class=\"image item\"><a href=\"".$this->EncURL($path)."\" data-lightbox=\"$contentid\"><div class=\"imgbox\">".$this->LazyLoadImage("?imgE=".base64_encode($path),$THUMBNAIL_WIDTH, $THUMBNAIL_HEIGHT)."</div></a> $name</div>\n";
 	}
 	private function LazyLoadImage( $imgpath, $width, $height, $id = NULL, $class = NULL ){
@@ -132,6 +132,10 @@ OPENTAG;
 	private function EncURL ( $TheVal ) //Url Encode, with slashes
 	{ 
 		return str_replace("%2F","/",rawurlencode($TheVal));
+	} 
+	private function EncPath ( $TheVal ) //Url Encode, with slashes
+	{ 
+		return str_replace("/","_",dirname($TheVal));
 	} 
 	private function GetSilkIcon ( $classname , $moarclass = NULL) //Url Encode, with slashes
 	{ 
