@@ -15,6 +15,7 @@ $im = @imagecreatefromjpeg( $imagecache );
 if ( $im )
 {
 header("Content-type: image/jpg");
+header('Cache-Control: "max-age=31557600, public"');
 imagejpeg($im);
 imagedestroy($im);
 exit();
