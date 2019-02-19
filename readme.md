@@ -9,4 +9,3 @@ Features:
 * File Extension Icons
 * AJAX-Based Loading System
 * Fully-Functional HTML5 History API Implementation
-
