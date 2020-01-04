@@ -6,7 +6,7 @@ require("_res/config_advanced.php");
 require("_res/functions.php");
 require("_res/class_lister.php");
 require("_res/handlers.php");
-$VERSION = "2.6";
+$VERSION = "2.7";
 $BRANCH = "master";
 // Handlers
 $num = rand(0,(count($dong) - 1));
@@ -85,7 +85,7 @@ $dirdata[CheckFileType($entry)][$entry] = array( filemtime( $DIR . "/" . $entry 
 }
 $uid = 0; $filecount = 0;
 foreach($CONTENT_SORT as $category){
-	if(!count($dirdata[$category[0]])) continue;
+	if(!is_array($dirdata[$category[0]])) continue;
 	$filecount += count($dirdata[$category[0]]);
 	$lister = new Lister($category[0],$category[1]);
 	$lister->SetCategoryContent($dirdata[$category[0]]);
@@ -116,7 +116,7 @@ if($filecount < 1){
 	  $k=0;
 	  foreach($CONTENT_SORT as $category) {
 		$key = $category[0];
-		  if(count( $dirdata[$key] ) == 0) { continue; } 
+		  if(!is_array( $dirdata[$key] )) { continue; } 
 		   ?>
       <li><a href="#<?php echo $k ?>"><?php echo $category[1] ?>s <span class="itemcount label label-<?=$BOOTSTRAP_CLASS[$key."s"]?>"><?php echo count( $dirdata[$key] ) ?></span></a></li>
       <?php $i++; $k++;}
